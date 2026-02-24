@@ -13,6 +13,8 @@
 ### General project setup
 general:
   inferBuildTool: true
+  buildTool: "mta"
+  productiveBranch: "main"
 
 ### Step-specific configuration
 steps:
@@ -26,6 +28,22 @@ steps:
 stages:
   'Confirm':
     manualConfirmation: false
+  Build:
+    npmExecuteLint: false
+
+  Acceptance:
+    cfDeploy: true
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
+    cfOrg: "3d1a9f0ftrial"
+    cfSpace: "dev"
+    cfDeployStrategy: "blue-green"
+
+  Release:
+    cfDeploy: true
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
+    cfOrg: "3d1a9f0ftrial"
+    cfSpace: "qa"
+    cfDeployStrategy: "blue-green"
 
 #  Integration:
 #    credentials:
